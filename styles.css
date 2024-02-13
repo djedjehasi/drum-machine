@@ -7,26 +7,23 @@
 
 #drum-machine {
     display: flex;
-    height: 400px;
+    align-items: center;
     width: 800px;
     margin: 0 auto;
     margin-top: 200px;
-    padding: 20px;
+    padding: 20px 50px;
     border: 1px lightgreen solid;
 }
 
 #pad-container {
     display: grid; 
-    grid-template-columns: 1fr 1fr 1fr; 
-    grid-template-rows: 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 80px 80px 80px ;
     gap: 15px 15px; 
     grid-template-areas: 
         ". . ."
         ". . ."
         ". . .";
-    align-items: center;
-    padding: 50px;
-    border: 1px lightsalmon solid;
 }
 
 .drum-pad {
@@ -38,3 +35,13 @@
     cursor: pointer;
 }
 
+#display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px black solid;
+    margin: auto;
+    padding: 10px 20px;
+    background-color: azure;
+    color: gray
+}

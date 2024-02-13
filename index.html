@@ -20,7 +20,7 @@ class DrumMachine extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            sound: ''
+            sound: 'askdj'
         }
     }
 
@@ -39,6 +39,7 @@ class DrumMachine extends React.Component {
                     <DrumPad value="X" audio="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"/>
                     <DrumPad value="C" audio="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"/>
                 </div>
+                <Display data={this.state.sound}/>
             </div>
         )
     }
@@ -53,6 +54,12 @@ const DrumPad = (props) => {
     }
         return (
         <div className="drum-pad" onClick={handleClick}>{props.value} <audio src={props.audio} id={props.value}></audio></div>
+    )
+}
+
+const Display = (props) => {
+    return(
+        <p id="display">{props.data}</p>
     )
 }
     
