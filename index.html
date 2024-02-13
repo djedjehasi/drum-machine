@@ -19,21 +19,25 @@
 class DrumMachine extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+            sound: ''
+        }
     }
 
+    
     render(){
         return(
             <div id="drum-machine">
                 <div id="pad-container">
                     <DrumPad value="Q" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"/>
-                    <DrumPad value="W"/>
-                    <DrumPad value="R"/>
-                    <DrumPad value="A"/>
-                    <DrumPad value="S"/>
-                    <DrumPad value="D"/>
-                    <DrumPad value="Z"/>
-                    <DrumPad value="X"/>
-                    <DrumPad value="C"/>
+                    <DrumPad value="W" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"/>
+                    <DrumPad value="R" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3"/>
+                    <DrumPad value="A" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3"/>
+                    <DrumPad value="S" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"/>
+                    <DrumPad value="D" audio="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"/>
+                    <DrumPad value="Z" audio="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"/>
+                    <DrumPad value="X" audio="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"/>
+                    <DrumPad value="C" audio="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"/>
                 </div>
             </div>
         )
@@ -41,8 +45,14 @@ class DrumMachine extends React.Component {
 } 
 
 const DrumPad = (props) => {
-    return (
-        <div className="drum-pad">{props.value} <audio src={props.audio} id={props.value}></audio></div>
+    const handleClick = () => {
+        new Audio(props.audio).play();
+        this.setState ({
+            sound: '22'
+        })
+    }
+        return (
+        <div className="drum-pad" onClick={handleClick}>{props.value} <audio src={props.audio} id={props.value}></audio></div>
     )
 }
     
