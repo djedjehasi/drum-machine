@@ -1,0 +1,38 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#drum-machine {
+    display: flex;
+    height: 400px;
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 200px;
+    padding: 20px;
+    border: 1px lightgreen solid;
+}
+
+#pad-container {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 15px 15px; 
+    grid-template-areas: 
+        ". . ."
+        ". . ."
+        ". . .";
+    align-items: center;
+    padding: 10px 50px;
+    border: 1px lightsalmon solid;
+}
+
+.drum-pad {
+    height: 80px;
+    width: 100px;
+    border: 1px lightgray solid;
+    text-align: center;
+    padding-top: 30px;
+}

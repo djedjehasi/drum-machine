@@ -6,6 +6,7 @@
   <title>Drum Machine</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="kokaneka">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -23,14 +24,27 @@ class DrumMachine extends React.Component {
     render(){
         return(
             <div id="drum-machine">
-                <div class="pad-container">
-                    here goes the pads
+                <div id="pad-container">
+                    <DrumPad value="Q" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"/>
+                    <DrumPad value="W"/>
+                    <DrumPad value="R"/>
+                    <DrumPad value="A"/>
+                    <DrumPad value="S"/>
+                    <DrumPad value="D"/>
+                    <DrumPad value="Z"/>
+                    <DrumPad value="X"/>
+                    <DrumPad value="C"/>
                 </div>
             </div>
         )
     }
-
 } 
+
+const DrumPad = (props) => {
+    return (
+        <div className="drum-pad">{props.value} <audio src={props.audio} id={props.value}></audio></div>
+    )
+}
     
 
 const App = (props) => {
