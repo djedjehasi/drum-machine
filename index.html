@@ -15,8 +15,21 @@
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
   <script type="text/babel">
 
-const DrumMachine = () => {
-    
+class DrumMachine extends React.Component {
+    constructor(props){
+        super(props)
+    }
+
+    render(){
+        return(
+            <div id="drum-machine">
+                <div class="pad-container">
+                    here goes the pads
+                </div>
+            </div>
+        )
+    }
+
 } 
     
 
@@ -24,6 +37,7 @@ const App = (props) => {
         return (
             <div >
                 <h1>Drum Machine</h1>
+                <DrumMachine />
             </div>
         );
     };
