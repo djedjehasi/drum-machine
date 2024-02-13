@@ -23,21 +23,25 @@ class DrumMachine extends React.Component {
             sound: 'askdj'
         }
     }
-
+    changeSoundName = (soundName) => {
+        this.setState({
+            sound: soundName
+        })
+    }
     
     render(){
         return(
             <div id="drum-machine">
                 <div id="pad-container">
-                    <DrumPad value="Q" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"/>
-                    <DrumPad value="W" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"/>
-                    <DrumPad value="R" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3"/>
-                    <DrumPad value="A" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3"/>
-                    <DrumPad value="S" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"/>
-                    <DrumPad value="D" audio="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"/>
-                    <DrumPad value="Z" audio="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"/>
-                    <DrumPad value="X" audio="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"/>
-                    <DrumPad value="C" audio="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"/>
+                    <DrumPad value="Q" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" soundChange={this.changeSoundName} name="Heater 1" />
+                    <DrumPad value="W" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3" soundChange={this.changeSoundName} name="Heater 2" />
+                    <DrumPad value="R" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3" soundChange={this.changeSoundName} name="Heater 3" />
+                    <DrumPad value="A" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3" soundChange={this.changeSoundName} name="Heater 4" />
+                    <DrumPad value="S" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3" soundChange={this.changeSoundName} name="Clap" />
+                    <DrumPad value="D" audio="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3" soundChange={this.changeSoundName} name="Open-HH" />
+                    <DrumPad value="Z" audio="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3" soundChange={this.changeSoundName} name="Kick-n'-Hat" />
+                    <DrumPad value="X" audio="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3" soundChange={this.changeSoundName} name="Kick" />
+                    <DrumPad value="C" audio="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3" soundChange={this.changeSoundName} name="HClosed-HH" />
                 </div>
                 <Display data={this.state.sound}/>
             </div>
@@ -48,12 +52,10 @@ class DrumMachine extends React.Component {
 const DrumPad = (props) => {
     const handleClick = () => {
         new Audio(props.audio).play();
-        this.setState ({
-            sound: '22'
-        })
+        props.soundChange(props.name);
     }
         return (
-        <div className="drum-pad" onClick={handleClick}>{props.value} <audio src={props.audio} id={props.value}></audio></div>
+        <div className="drum-pad" onClick={handleClick}>{props.value} <audio src={props.audio} id={props.name}></audio></div>
     )
 }
 
