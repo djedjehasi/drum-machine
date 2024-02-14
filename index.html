@@ -16,13 +16,16 @@
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
   <script type="text/babel">
 
+
 class DrumMachine extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            sound: 'askdj'
+            sound: ''
         }
     }
+
+
     changeSoundName = (soundName) => {
         this.setState({
             sound: soundName
@@ -31,7 +34,7 @@ class DrumMachine extends React.Component {
     
     render(){
         return(
-            <div id="drum-machine">
+            <div id="drum-machine" >
                 <div id="pad-container">
                     <DrumPad value="Q" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" soundChange={this.changeSoundName} name="Heater 1" />
                     <DrumPad value="W" audio="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3" soundChange={this.changeSoundName} name="Heater 2" />
@@ -41,7 +44,7 @@ class DrumMachine extends React.Component {
                     <DrumPad value="D" audio="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3" soundChange={this.changeSoundName} name="Open-HH" />
                     <DrumPad value="Z" audio="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3" soundChange={this.changeSoundName} name="Kick-n'-Hat" />
                     <DrumPad value="X" audio="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3" soundChange={this.changeSoundName} name="Kick" />
-                    <DrumPad value="C" audio="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3" soundChange={this.changeSoundName} name="HClosed-HH" />
+                    <DrumPad value="C" audio="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3" soundChange={this.changeSoundName} name="Closed-HH" />
                 </div>
                 <Display data={this.state.sound}/>
             </div>
@@ -54,6 +57,7 @@ const DrumPad = (props) => {
         new Audio(props.audio).play();
         props.soundChange(props.name);
     }
+
         return (
         <div className="drum-pad" onClick={handleClick}>{props.value} <audio src={props.audio} id={props.name}></audio></div>
     )
@@ -66,14 +70,24 @@ const Display = (props) => {
 }
     
 
-const App = (props) => {
-        return (
-            <div >
-                <h1>Drum Machine</h1>
-                <DrumMachine />
-            </div>
-        );
-    };
+
+const App = (props) => {  
+    const [pressedKey, setPressedKey] = React.useState(null);
+
+    const handleKeyDown = (event) => {
+    setPressedKey(event.key);
+    console.log('key pressed: ', event.key)
+    };  
+    return (
+        <div id="app">
+            <h1>Drum Machine</h1>
+            <DrumMachine />
+        </div>
+    );
+};
+
+
+    
     ReactDOM.render(
         App(),
         document.getElementById('place-app')
